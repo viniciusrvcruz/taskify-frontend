@@ -1,9 +1,8 @@
+<script setup>
+</script>
+
 <template>
-    <div class="card">
-        Taks List
+    <div>
+        TaskList
     </div>
 </template>
-
-<script setup>
-
-</script>
