@@ -22,3 +22,8 @@ export const ConfirmMessage = (title, text) => {
         cancelButtonText: "Não"
     })
 }
+
+export const FormatDate = (isoString) => {
+    var date = new Date(isoString);
+    return date.toLocaleString('pt-BR', { timezone: 'UTC' });
+  }

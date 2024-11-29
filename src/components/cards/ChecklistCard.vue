@@ -41,15 +41,15 @@ const checkChecklist = () => {
             @change="checkChecklist(checklist)">
         <div class="flex items-center justify-between flex-1 gap-5">
             <div>
-                <h3 class="block font-bold text-gray-800 text-start break-all dark:text-white">
+                <h3 class="block font-bold text-gray-800 break-all text-start dark:text-white">
                     {{ checklist.title }}
                 </h3>
-                <p class="text-gray-600 text-start break-all dark:text-gray-400">
+                <p class="text-gray-600 break-all text-start dark:text-gray-400">
                     {{ checklist.description }}
                 </p>
             </div>
             <div class="flex items-center">
-                <span v-if="showTask && checklist.task" class="bg-gray-100 text-gray-800 text-xs font-medium me-5 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{{ checklist.task.title }}</span>
+                <RouterLink v-if="showTask && checklist.task" :to="`/tasks/${checklist.task.id}`" class="bg-gray-100 text-gray-800 text-xs font-medium me-5 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 hover:dark:bg-gray-500" @click.stop>{{ checklist.task.title }}</RouterLink>
                 <Button type="button" icon="pi pi-ellipsis-v" aria-haspopup="true" aria-controls="overlay_menu"
                     size="small"
                     class="text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-700"

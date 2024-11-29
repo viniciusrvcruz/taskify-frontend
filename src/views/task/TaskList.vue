@@ -84,9 +84,9 @@ onBeforeMount(() => {
                     Criar nova tarefa
                 </Button>
 
-                <form v-if="!showEmptyState" class="w-full flex justify-center mt-4">
-                    <div class="relative w-1/2 flex justify-center">
-                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <form v-if="!showEmptyState" class="flex justify-center w-full mt-4">
+                    <div class="relative flex justify-center w-1/2">
+                        <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
@@ -94,7 +94,7 @@ onBeforeMount(() => {
                         <input
                             v-model="searchTask"
                             type="search"
-                            class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                            class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                             placeholder="Pesquise uma tarefa"
                             required
                         />
@@ -115,7 +115,7 @@ onBeforeMount(() => {
     <div v-else class="max-w-[90rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-10 mx-auto">
         <div v-if="tasks.length" class="grid grid-cols-2 gap-5 lg:grid-cols-4 sm:grid-cols-3">
             <RouterLink v-for="task in tasks" :to="`/tasks/${task.id}`" :key="task.id"
-                class="flex flex-col justify-center p-4 group hover:bg-gray-50 focus:outline-none focus:bg-gray-50 rounded-xl md:p-7 dark:hover:bg-gray-800 dark:focus:bg-gray-800">
+                class="flex flex-col justify-center p-4 w-72 group hover:bg-gray-50 focus:outline-none focus:bg-gray-50 rounded-xl md:p-7 dark:hover:bg-gray-800 dark:focus:bg-gray-800">
                 <div>
                     <div class="flex items-start justify-between">
                         <h3
@@ -141,16 +141,16 @@ onBeforeMount(() => {
             <TaskMenu ref="taskMenuList" @edit="taskFormModalRef.show" @delete="deleteTask" />
         </div>
         <div v-else-if="pendingRequest" class="grid grid-cols-2 gap-5 lg:grid-cols-4 sm:grid-cols-3">
-            <div v-for="index in 5" class="shadow p-4 w-56 mx-auto" :key="index">
-                <div class="animate-pulse flex space-x-4">
-                    <div class="flex-1 space-y-6 py-1">
-                    <div class="h-2 bg-slate-700 rounded"></div>
+            <div v-for="index in 5" class="w-56 p-4 mx-auto shadow" :key="index">
+                <div class="flex space-x-4 animate-pulse">
+                    <div class="flex-1 py-1 space-y-6">
+                    <div class="h-2 rounded bg-slate-700"></div>
                     <div class="space-y-3">
                         <div class="grid grid-cols-3 gap-4">
-                        <div class="h-2 bg-slate-700 rounded col-span-2"></div>
-                        <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+                        <div class="h-2 col-span-2 rounded bg-slate-700"></div>
+                        <div class="h-2 col-span-1 rounded bg-slate-700"></div>
                         </div>
-                        <div class="h-2 bg-slate-700 rounded"></div>
+                        <div class="h-2 rounded bg-slate-700"></div>
                     </div>
                     </div>
                 </div>

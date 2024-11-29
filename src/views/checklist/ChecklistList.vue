@@ -68,7 +68,8 @@ onBeforeMount(() => {
             </div>
 
             <div class="max-w-3xl mx-auto mt-5 text-center">
-                <p class="text-lg text-gray-600 dark:text-gray-400">Organize suas tarefas de forma eficiente com as checklists, garantindo produtividade e controle em cada etapa do seu dia.</p>
+                <p class="text-lg text-gray-600 dark:text-gray-400">Organize suas tarefas de forma eficiente com as
+                    checklists, garantindo produtividade e controle em cada etapa do seu dia.</p>
             </div>
 
             <div class="flex justify-center gap-3 mt-4">
@@ -80,25 +81,24 @@ onBeforeMount(() => {
             </div>
         </div>
     </div>
-    <div class="max-w-[90rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-full">
+    <div v-if="checklists.length" class="max-w-[90rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-full">
         <div class="flex flex-col flex-1">
             <ChecklistCard v-for="checklist in checklists" :checklist="checklist" :key="checklist.id" />
-            <ChecklistMenu
-                ref="checklistMenu"
-                @edit="checklistFormModalRef.show($event)"
-                @delete="deleteChecklist"
-                @view="checklistDetailsRef.show($event.id)"
-            />
+            <ChecklistMenu ref="checklistMenu" @edit="checklistFormModalRef.show($event)" @delete="deleteChecklist"
+                @view="checklistDetailsRef.show($event.id)" />
             <ChecklistDetails ref="checklistDetailsRef" />
         </div>
-        <Paginator
-            class="mt-5"
-            :rows="10"
-            :totalRecords="totalRecords"
-            :rowsPerPageOptions="[10, 20, 30]"
-            @page="onPaginatorPage"
-        >
+        <Paginator class="mt-5" :rows="10" :totalRecords="totalRecords" :rowsPerPageOptions="[10, 20, 30]"
+            @page="onPaginatorPage">
         </Paginator>
+    </div>
+    <div v-else class="flex-col items-center w-full">
+        <h3 class="text-lg font-bold text-center md:text-2xl md:leading-tight dark:text-white">
+            Nenhuma checklist foi encontrada!
+        </h3>
+        <p class="text-center text-gray-600 dark:text-gray-400">
+            Adicione uma checklist.
+        </p>
     </div>
     <ChecklistFormModal ref="checklistFormModalRef" @submit="findAllChecklists" />
 </template>

@@ -10,6 +10,7 @@ import ChecklistFormModal from '@/components/modals/ChecklistFormModal.vue';
 import TaskFormModal from '@/components/modals/TaskFormModal.vue';
 import ChecklistMenu from '@/components/menu/ChecklistMenu.vue';
 import ChecklistCard from '@/components/cards/ChecklistCard.vue';
+import ChecklistDetails from '@/components/modals/ChecklistDetails.vue';
 
 const route = useRoute()
 const router = useRouter()
@@ -18,6 +19,7 @@ const taskChecklistMenu = ref()
 
 const checklistFormModalRef = ref('checklistFormModalRef')
 const taskFormModalRef = ref('taskFormModalRef')
+const checklistDetailsRef = ref('checklistDetailsRef')
 
 const task = ref(null)
 const checklists = ref([])
@@ -101,8 +103,13 @@ onMounted(() => {
             <h3 class="mb-5 text-xl font-bold md:text-2xl md:leading-tight dark:text-white">Checklists</h3>
             <div class="grid items-center gap-6 sm:grid-cols-1 lg:grid-cols-1">
                 <ChecklistCard v-for="checklist in checklists" :checklist="checklist" :key="checklist.id" :showTask="false" />
-                <ChecklistMenu ref="taskChecklistMenu" @edit="checklistFormModalRef.show($event, task)"
-                    @delete="deleteChecklist" />
+                <ChecklistMenu
+                    ref="taskChecklistMenu"
+                    @edit="checklistFormModalRef.show($event, task)"
+                    @delete="deleteChecklist"
+                    @view="checklistDetailsRef.show($event.id)"
+                />
+                <ChecklistDetails ref="checklistDetailsRef" />
             </div>
             <Paginator class="mt-5" :rows="10" :totalRecords="totalRecords" :rowsPerPageOptions="[10, 20, 30]"
                 @page="onPaginatorPage">
