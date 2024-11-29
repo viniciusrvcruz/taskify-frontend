@@ -8,3 +8,31 @@
   @tailwind components;
   @tailwind utilities;
 }
+
+.invalid-input {
+  @apply bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500;
+}
+
+.p-select:not(.p-disabled).p-focus {
+  @apply border-blue-600
+}
+
+.p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus {
+  @apply bg-gray-100 dark:bg-gray-800 text-surface-800 dark:text-surface-0
+}
+
+.p-select-option.p-select-option-selected {
+  @apply bg-blue-900
+}
+
+.p-select-option.p-select-option-selected.p-focus {
+  @apply bg-blue-800
+}
+
+.p-paginator {
+  @apply bg-transparent
+}
+
+.p-paginator-page-selected {
+  @apply bg-blue-800
+}
